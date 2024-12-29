@@ -1,0 +1,11 @@
+python-dotenv
+tqdm
+typer
+requests>=2.32.3
+loguru>=0.7.3
+typer>=0.15.1
+tqdm>=4.67.1
+## AWS CloudOps
+boto3>=1.35.90
+moto>=5.0.25
+-e .
