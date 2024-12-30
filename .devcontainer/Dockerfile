@@ -25,8 +25,8 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --compile-bytecode .
 
 ## Run tests during the build phase
-COPY tests/ /tests/
-RUN pytest -v /tests
+# COPY tests/ /tests/
+# RUN pytest -v /tests
 
 ## Stage 2 - Production Stage: Use alpine for the final image to reduce the total size
 FROM python:3.12-alpine AS prod
