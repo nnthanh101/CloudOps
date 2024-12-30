@@ -4,7 +4,7 @@ name = "runbooks"
 authors = [
     {name = "runbooks maintainers", email = "nnthanh101@gmail.com"},
 ]
-version = "0.1.1"
+version = "0.1.2"
 description = "CloudOps Automation for DevOps and SRE teams."
 readme = "README.md"
 license = {file = "LICENSE.txt"}
