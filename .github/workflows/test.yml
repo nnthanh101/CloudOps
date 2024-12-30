@@ -45,7 +45,7 @@ jobs:
       ## Test Coverage Report
       - name: 📊 Test Coverage
         run: |
-          uv run pytest --cov=src/cloudops --cov-report=xml tests/
+          uv run pytest --cov=src/runbooks --cov-report=xml tests/
 
       ## Upload Coverage Report
       - name: 📈 Upload Coverage to Codecov

@@ -25,10 +25,10 @@ classifiers = [
 
 # [project.urls]
 # Homepage = "https://cloudops.oceansoft.io"
-# Changelog = "https://github.com/nnthanh101/CloudOps/blob/master/CHANGELOG.md"
-# Releases = "https://github.com/nnthanh101/CloudOps/releases"
-# Source = "https://github.com/nnthanh101/CloudOps"
-# bug_reports = "https://github.com/nnthanh101/CloudOps/issues"
+# Changelog = "https://github.com/nnthanh101/runbooks/blob/master/CHANGELOG.md"
+# Releases = "https://github.com/nnthanh101/runbooks/releases"
+# Source = "https://github.com/nnthanh101/runbooks"
+# bug_reports = "https://github.com/nnthanh101/runbooks/issues"
 
 dependencies = [
   "requests>=2.32.3",
@@ -72,11 +72,11 @@ line-ending = "lf"
 ## Test Configuration
 pythonpath = ["src"]
 testpaths = ["tests"]
-addopts = "--cov=src/cloudops --cov-report=term-missing"
+addopts = "--cov=src/runbooks --cov-report=term-missing"
 
 [project.scripts]
 ## Will run the function by just typing `sync-down` and `sync-up` in the CLI
-# sync-down = "cloudops.cli:sync_down"
-# sync-up = "cloudops.cli:sync_up"
-# cloudops = "cloudops.runbooks:main"
+# sync-down = "runbooks.cli:sync_down"
+# sync-up = "runbooks.cli:sync_up"
+# runbooks = "runbooks.runbooks:main"
 # check-code-quality = "cloudops.toolkit:check_code_quality"

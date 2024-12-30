@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - "release"
+      - python-template
 
 ## Defines two custom environment variables for Docker image configuration. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
@@ -47,7 +48,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GH_TOKEN }}
 
       ## 5. Extract metadata for image tagging and labeling
       ## This step uses [docker/metadata-action](https://github.com/docker/metadata-action#about) to extract tags and labels that will be applied to the specified image. The `id` "meta" allows the output of this step to be referenced in a subsequent step. The `images` value provides the base name for the tags and labels.
@@ -70,7 +71,7 @@ jobs:
 
       ## 6. Cache dependencies for faster builds
       - name: 📦 Cache Docker layers
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-docker-${{ github.sha }}
@@ -83,7 +84,7 @@ jobs:
       ## It uses the `tags` and `labels` parameters to tag and label the image with the output from the "meta" step.
       - name: 🛠️ Build and Push Docker image
         id: push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile
@@ -104,7 +105,7 @@ jobs:
 
       ## 9. Security scanning using Trivy
       - name: 🔍 Scan Docker image for vulnerabilities
-        uses: aquasecurity/trivy-action@0.14.0
+        uses: aquasecurity/trivy-action@0.29.0
         with:
           image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           format: table

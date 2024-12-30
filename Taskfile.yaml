@@ -4,10 +4,10 @@ version: '3'
 # GLOBAL VARIABLES                                                              #
 #################################################################################
 vars:
-  PROJECT_NAME: "cloudops"
+  PROJECT_NAME: "runbooks"
   PYTHON_VERSION: "3.12"
   PYTHON_INTERPRETER: "python3"
-  CHECK_DIRS: "src/cloudops"
+  CHECK_DIRS: "src/runbooks"
   DATA_BUCKET: "s3://runbooks/data"
   DATA_LOCAL_DIR: "data"
   PUBLISH_TOKEN: "{{.UV_PUBLISH_TOKEN}}"
@@ -36,6 +36,7 @@ tasks:
   cmds:
     - echo "Setting UV link mode to {{.UV_LINK_MODE}} for compatibility..."
     - export UV_LINK_MODE={{.UV_LINK_MODE}}
+    # - uv self update
     - echo "Syncing dependencies with UV..."
     - uv sync --all-extras --dev
     - echo "Installing build tool..."
