@@ -8,7 +8,7 @@
 > [!NOTE]
 > **👁️ Vision**: Our vision is to be the 🥇 One-Stop Multi-Cloud Platform Engineering & Best Practices Solution for all CloudOps Automation needs, allowing DevOps and SRE teams to automate their workflows with ease, improve efficiency, and minimize toil.
 
-[![🐍 Runbooks PyPI version](https://img.shields.io/pypi/v/runbooks)](https://pypi.org/project/runbooks/) ![🦾 GitHub Container Registry](https://img.shields.io/github/v/tag/nnthanh101/runbooks?label=GHCR%20Version&color=blue&logo=docker)
+[![🐍 Runbooks PyPI version](https://img.shields.io/pypi/v/runbooks)](https://pypi.org/project/runbooks/) ![🦾 GitHub Container Registry](https://img.shields.io/github/v/tag/nnthanh101/runbooks:latest?label=GHCR%20Version&color=blue&logo=docker)
 
 
 <div align="left">
