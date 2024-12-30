@@ -8,7 +8,7 @@ vars:
   PYTHON_VERSION: "3.12"
   PYTHON_INTERPRETER: "python3"
   CHECK_DIRS: "src/cloudops"
-  DATA_BUCKET: "s3://cloudops101/data"
+  DATA_BUCKET: "s3://runbooks/data"
   DATA_LOCAL_DIR: "data"
   PUBLISH_TOKEN: "{{.UV_PUBLISH_TOKEN}}"
 
