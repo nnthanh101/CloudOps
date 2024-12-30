@@ -18,13 +18,27 @@
 
 ---
 
-## Features
+## 🛠️ Features
 
-- [x] 🛠️ configuration in a single file [`pyproject.toml`](pyproject.toml)
-- [x] 📦 [`uv`](https://docs.astral.sh/uv/) as package manager: **Fast Dependency Management** – UV optimizes builds and installations.  
-- [x] 💅 [`ruff`](https://docs.astral.sh/ruff/) for simplifies linting and formatting
-- [x] 🧪 [`pytest`](https://docs.pytest.org/en/stable/), supports AWS SDK mocking and validation.   
-- [x] 🧹 [`Taskfile`](Taskfile) with code quality checks
+* 🥉 ✅**Lightning-Fast Toolchain**: Powered by 📦 `uv` - Next-generation Python dependency and build management, 💅 `ruff` - Linting and formatting at blazing speed, and 🧪 pytest - Robust testing framework with coverage reports.
+* 🥈 ✅**Effortless CI/CD Pipelines**: 🛠️ Taskfile Automation - Say goodbye to manual SDLC repetitive tasks, 🐳 Containerized Workflows – 🛡️ Security-first practices and Multi-stage Wolfi-based Docker builds for scalable production-ready environments, and ⚙️ Auto-publish to `PyPI` and GitHub Container Registry (`GHCR`) with GitHub Actions.
+* 🥇 ☑️**CloudOps Automation and FinOps Toolkit** – Pre-configured hybrid-cloud workflows and seamlessly integrations (jupyterlab, mkdocs, boto3, moto) for managing cloud infrastructure 🌐.  
+
+| **Feature**              | **Toolchain**                            | **Purpose**                                        |
+|--------------------------|-------------------------------------|----------------------------------------------------|
+| 🛠️ Configuration         | `pyproject.toml`                 | Centralized configuration for dependencies, testing, and linting.  |
+| 🧹 Task Automation       | [`Taskfile`](https://taskfile.dev/) | Automates repetitive tasks like linting, testing, and publishing.  |
+| 📦 Python Dependencies   | [`uv`](https://docs.astral.sh/uv/)  | Lightning-fast dependency resolution, caching, and builds. |
+| 💅 Linting & Formatting  | [`ruff`](https://docs.astral.sh/ruff/) | Enforces code quality standards, auto-formatting, and import sorting.  |
+| 🧪 Testing Framework     | [`pytest`](https://docs.pytest.org/)  | Comprehensive unit tests, integration tests with coverage reporting.    |
+| 🐳 Docker Integration    | Dockerfile + [`DevContainer`](https://containers.dev/)  | Optimized wolfi-based multi-stage builds for CI/CD and local development environments. |
+| 🦾 CI/CD Pipelines       | [`GitHub Actions`](https://github.com/features/actions) | Automated builds, tests, and deployments to PyPI and GHCR. |
+| 📝 Security Compliance   | [`chainguard/wolfi-base`](https://hub.docker.com/r/chainguard/wolfi-base) + SBOM + Attestations | Ensures compliance, vulnerability scanning, and security transparency. |
+
+---
+
+### WIP
+
 - [ ] 📚 auto doc generation
 - [ ] **CLI Tools** – Typer simplifies automation for AWS resources.  
 - [ ] **Logging** – Loguru ensures structured logs for debugging. 
@@ -33,6 +47,37 @@
     - [x] auto publish to [`pypi`](https://pypi.org/) on push on `main`
     - [ ] auto creating a new tag on push on `main`, sync versions
     - [x] run `tests` and `lint` on `dev` and `main` when a PR is open
+
+## 🚀 Quick Start
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/nnthanh101/CloudOps.git
+cd CloudOps
+```
+
+### 2. Install Dependencies and Run CI/CD Pipelines
+
+```bash
+echo "Install Python dependencies using UV"
+task install
+
+echo "Run CI/CD pipeline tasks: clean, lint, format, test, and build"
+task ci
+
+echo "Publish the project package to PyPI"
+task publish
+```
+
+### 3. Run in DevContainer 🐳
+
+1. Open the project in **VSCode**.  
+2. Install the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension.  
+3. **Reopen in Container**:  
+   **Command Palette `Ctrl+Shift+P` → Reopen in Container**.  
+
+---
 
 ## Project Structure
 
@@ -110,77 +155,3 @@ cloudops-automation/
 └── Taskfile           <- Taskfile with convenience commands like `task data` or `task train`
 
 ```
-
-## Getting started
-
-### Installation
-
-To set it up and run
-
-```bash
-uv venv
-uv sync
-```
-Then
-
-```bash
-python main.py
-```
-
-Will output a random joke
-
-```
-Why did the cow in the pasture get promoted at work? ...  Because he is OUT-STANDING in his field!
-```
-
-### Development
-
-You can install in `editable` mode the library
-
-```bash
-uv pip install -e .
-```
-
-You can now run, for example, a function defined as `scripts` in the [`pyproject.toml`](pyproject.toml)
-
-```bash
-make_me_laugh
-```
-
-### Linting
-
-```
-ruff check
-```
-
-
-### Formatting
-
-```
-ruff format
-```
-
-## CI/CD
-
-### Tests
-Tests inside `/tests` are run using [`pytest`](https://docs.pytest.org/en/stable/) on PR both on `dev` and `main`
-
-### Publish Package
- In order to publish to [pypi](https://pypi.org/) you need to create a secret called `UV_PUBLISH_TOKEN` with your [pypi access token](https://pypi.org/manage/account/) under **API tokens**.
-
-
-### Docker
-[`Dockerfile`](Dockerfile) contains a multi stage build that uses `--compile-bytecode` to compite your package. For this example, the resulting image is just
-
-```bash
-docker build -t python-template .
-```
-
-```
-REPOSITORY        TAG       IMAGE ID       CREATED          SIZE
-python-template   latest    1ded7d260b1c   58 seconds ago   55.4MB
-```
-
-The image is build using the [`build`](.github/workflows/build.yml) workflow when a new *relaese* is created
-
----
