@@ -1,8 +1,8 @@
 [project]
 ## https://docs.astral.sh/uv/concepts/projects/config/
-name = "aws-ops"
+name = "cloudops101"
 authors = [
-    {name = "aws-ops maintainers", email = "nnthanh101@gmail.com"},
+    {name = "cloudops101 maintainers", email = "nnthanh101@gmail.com"},
 ]
 version = "0.1.0"
 description = "CloudOps Automation for DevOps and SRE teams."
