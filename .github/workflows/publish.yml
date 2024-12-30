@@ -11,7 +11,7 @@ permissions:
   id-token: write  ## Required for trusted publishing via OpenID Connect (OIDC)
 
 env:
-  PACKAGE_NAME: os1
+  PACKAGE_NAME: cloudops101
   BUILD_DIR: dist
 
 jobs:
