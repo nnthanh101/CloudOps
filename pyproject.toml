@@ -1,6 +1,6 @@
 [project]
 ## https://docs.astral.sh/uv/concepts/projects/config/
-name = "os1"
+name = "cloudops101"
 version = "0.1.0"
 description = "CloudOps Automation for DevOps and SRE teams by providing an extensive, community-driven repository of actions and runbooks that streamline day-to-day operations."
 readme = "README.md"
