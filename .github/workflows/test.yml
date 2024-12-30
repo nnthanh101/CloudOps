@@ -1,0 +1,55 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [main, dev]
+
+jobs:
+  build-lint-format-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      ## Checkout Repository
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v4
+
+      ## Install UV Package Manager
+      - name: 📦 Install uv
+        uses: astral-sh/setup-uv@v4
+
+      ## Setup Python Environment
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+
+      ## Install Dependencies
+      - name: 🦾 Install the project
+        run: |
+          uv sync --all-extras --dev
+          uv pip install -e .
+
+      ## Code Quality Checks
+      - name: 💅 Lint and Format Check
+        run: |
+          task check_code_quality
+
+      ## Run Unit Tests
+      - name: 🧪 Unit Tests
+        run: |
+          export PYTHONPATH=src:$PYTHONPATH
+          uv run pytest tests/
+
+      ## Test Coverage Report
+      - name: 📊 Test Coverage
+        run: |
+          uv run pytest --cov=src/cloudops --cov-report=xml tests/
+
+      ## Upload Coverage Report
+      - name: 📈 Upload Coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
