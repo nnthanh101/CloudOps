@@ -36,7 +36,7 @@ line-length = 120
 
 [tool.ruff.lint]
 select = ["E", "W", "F", "I"]
-ignore = ["F401", "E501"] ## Ignore unused imports
+ignore = ["F401", "E501", "F811"] ## Ignore unused imports
 fixable = ["I"]
 unfixable = []
 
