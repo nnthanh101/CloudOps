@@ -31,13 +31,13 @@ tasks:
   #################################################################################
 
   ## Install Python Dependencies
-  requirements:
+  install:
   desc: "Install Python dependencies using UV with copy mode"
   cmds:
     - echo "Setting UV link mode to {{.UV_LINK_MODE}} for compatibility..."
     - export UV_LINK_MODE={{.UV_LINK_MODE}}
     - echo "Syncing dependencies with UV..."
-    - uv sync
+    - uv sync --all-extras --dev
     - echo "Installing build tool..."
     - "{{.PYTHON_INTERPRETER}} -m pip install build --upgrade"
 
@@ -68,7 +68,7 @@ tasks:
   desc: "Run and auto-fix linting issues with Ruff"
   cmds:
     - echo "Running Ruff lint checks and fixing issues..."
-    - "{{.PYTHON_INTERPRETER}} -m ruff check {{.CHECK_DIRS}} --fix"
+    - "{{.PYTHON_INTERPRETER}} -m ruff check {{.CHECK_DIRS}} --select I --fix"
 
   ## Format Code with Ruff
   format:
@@ -81,8 +81,10 @@ tasks:
   check_code_quality:
     desc: "Perform comprehensive code quality checks"
     cmds:
-      - task: lint
       - task: format
+      - task: lint
+      - "{{.PYTHON_INTERPRETER}} -m ruff check {{.CHECK_DIRS}} --select I -e"
+  
 
   #################################################################################
   # DATA MANAGEMENT                                                               #
@@ -118,7 +120,10 @@ tasks:
     desc: "Publish the project package to PyPI"
     cmds:
       - echo "Publishing package to PyPI..."
-      - "{{.PYTHON_INTERPRETER}} -m twine upload dist/* --username __token__ --password '{{.PUBLISH_TOKEN}}'"
+      # - "{{.PYTHON_INTERPRETER}} -m twine upload dist/* --username __token__ --password '{{.PUBLISH_TOKEN}}'"
+      - uv build
+      - uv publish --token $UV_PUBLISH_TOKEN
+
 
   #################################################################################
   # CI/CD PIPELINE TASKS                                                           #

@@ -4,13 +4,14 @@ on:
   push:
     branches:
       - main
+      - python-template
 
 permissions:
   contents: read
   id-token: write  ## Required for trusted publishing via OpenID Connect (OIDC)
 
 env:
-  PACKAGE_NAME: cloudops
+  PACKAGE_NAME: os1
   BUILD_DIR: dist
 
 jobs:
