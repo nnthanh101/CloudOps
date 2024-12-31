@@ -159,16 +159,22 @@ cloudops-automation/
 
 ### Docker Image
 
-* Check if the image exists in GitHub Packages:
+* 1. Check if the image exists in GitHub Packages:
 
 ```
 docker pull ghcr.io/nnthanh101/runbooks:latest
 ```
 
-* If the image doesn't exist, build and push it:
+* 2. If the image doesn't exist, build and push it:
 
 ```
 docker build -t ghcr.io/nnthanh101/runbooks:latest .
 docker login ghcr.io -u nnthanh -p GH_TOKEN
 docker push ghcr.io/nnthanh101/runbooks:latest
+```
+
+* 3. Inspect
+
+```
+docker inspect ghcr.io/nnthanh101/runbooks:latest
 ```
