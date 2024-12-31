@@ -64,13 +64,6 @@ tasks:
   # CODE QUALITY CHECKS                                                           #
   #################################################################################
 
-  ## Linting Code with Ruff
-  lint:
-  desc: "Run and auto-fix linting issues with Ruff"
-  cmds:
-    - echo "Running Ruff lint checks and fixing issues..."
-    - "{{.PYTHON_INTERPRETER}} -m ruff check {{.CHECK_DIRS}} --select I --fix"
-
   ## Format Code with Ruff
   format:
     desc: "Auto-format code using Ruff"
@@ -78,13 +71,21 @@ tasks:
       - echo "Formatting code with Ruff..."
       - "{{.PYTHON_INTERPRETER}} -m ruff format {{.CHECK_DIRS}}"
 
+  ## Linting Code with Ruff
+  lint:
+  desc: "Run and auto-fix linting issues with Ruff"
+  cmds:
+    - task: format
+    - echo "Running Ruff lint checks and fixing issues..."
+    - "{{.PYTHON_INTERPRETER}} -m ruff check {{.CHECK_DIRS}} --select I --fix"
+    - "{{.PYTHON_INTERPRETER}} -m ruff check {{.CHECK_DIRS}} --select I -e"
+
   ## Check Code Quality
-  check_code_quality:
-    desc: "Perform comprehensive code quality checks"
+  code_quality:
+    desc: "Validcate Code Quality with SonarQube"
     cmds:
-      - task: format
-      - task: lint
-      - "{{.PYTHON_INTERPRETER}} -m ruff check {{.CHECK_DIRS}} --select I -e"
+      - echo "SonarQube: Validcate Code Quality ..."
+      - echo "sonar-python: https://www.sonarsource.com/knowledge/languages/python/"
   
 
   #################################################################################
@@ -142,7 +143,7 @@ tasks:
     desc: "Run CI/CD pipeline tasks: clean, lint, format, and test"
     cmds:
       - task: clean
-      - task: check_code_quality
+      - task: code_quality
       - export PYTHONPATH=src:$PYTHONPATH
       - task: test
       - task: build
