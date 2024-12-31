@@ -157,7 +157,7 @@ cloudops-automation/
 
 ```
 
-### Docker Image
+### [Github Container Registry to store and manage Docker and OCI images](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 
 * 1. Check if the image exists in GitHub Packages:
 
