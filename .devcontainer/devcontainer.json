@@ -4,10 +4,11 @@
   "name": "Data-Science Cross-Platform Docker-Container, including Python, JupyterLab, Gunicorn, Nginx, and MkDocs.",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   // "image": "docker.io/nnthanh101/python:latest",
-  "build": { 
-    "context": "../",
-    "dockerfile": "../Dockerfile",
-  },
+  "image": "ghcr.io/nnthanh101/runbooks:latest",
+  // "build": { 
+  //   "context": "../",
+  //   "dockerfile": "../Dockerfile",
+  // },
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
   // "mounts": [

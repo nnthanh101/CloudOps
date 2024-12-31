@@ -156,3 +156,19 @@ cloudops-automation/
 └── Taskfile           <- Taskfile with convenience commands like `task data` or `task train`
 
 ```
+
+### Docker Image
+
+* Check if the image exists in GitHub Packages:
+
+```
+docker pull ghcr.io/nnthanh101/runbooks:latest
+```
+
+* If the image doesn't exist, build and push it:
+
+```
+docker build -t ghcr.io/nnthanh101/runbooks:latest .
+docker login ghcr.io -u nnthanh -p GH_TOKEN
+docker push ghcr.io/nnthanh101/runbooks:latest
+```
