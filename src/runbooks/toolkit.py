@@ -134,14 +134,14 @@ def divide(a: Number, b: Number) -> float:
         TypeError: If inputs are not numbers.
         ZeroDivisionError: If the denominator is zero.
     """
-    # Input validation
+    ## Input validation
     if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
         raise TypeError("Both inputs must be integers or floats.")
 
-    # Handle division by zero
+    ## Handle division by zero
     if b == 0:
         raise ZeroDivisionError("division by zero")
 
-    # Perform division
+    ## Perform division
     logger.debug(f"Dividing {a} / {b}")
     return float(a / b)

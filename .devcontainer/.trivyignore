@@ -1,0 +1,5 @@
+ignoreRules:
+  - id: "AsymmetricPrivateKey"
+    paths:
+      - "/app/.venv/lib/python3.12/site-packages/moto/moto_proxy/ca.key"
+      - "/app/.venv/lib/python3.12/site-packages/moto/moto_proxy/cert.key"

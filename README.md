@@ -8,7 +8,8 @@
 > [!NOTE]
 > **👁️ Vision**: Our vision is to be the 🥇 One-Stop Multi-Cloud Platform Engineering & Best Practices Solution for all CloudOps Automation needs, allowing DevOps and SRE teams to automate their workflows with ease, improve efficiency, and minimize toil.
 
-[![🐍 CloudOps PyPI version](https://img.shields.io/pypi/v/runbooks)](https://pypi.org/project/runbooks/)
+[![🐍 Runbooks PyPI version](https://img.shields.io/pypi/v/runbooks)](https://pypi.org/project/runbooks/) ![🦾 GitHub Container Registry](https://img.shields.io/github/v/tag/nnthanh101/runbooks:latest?label=GHCR%20Version&color=blue&logo=docker)
+
 
 <div align="left">
   <a href="https://www.linkedin.com/in/nnthanh" target="blank"><img align="center" src="https://img.shields.io/badge/-nnthanh-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/nnthanh/" alt="Nhat-Thanh Nguyen" height="25" width="100" /></a>
@@ -53,8 +54,8 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/nnthanh101/CloudOps.git
-cd CloudOps
+git clone https://github.com/nnthanh101/runbooks.git
+cd runbooks
 ```
 
 ### 2. Install Dependencies and Run CI/CD Pipelines
@@ -116,10 +117,10 @@ cloudops-automation/
 │   └── model_evaluation.ipynb
 │
 ├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         cloudops and configuration for tools like black
+│                         runbooks and configuration for tools like black
 │
 ├── src/                            ## 🧩 Source code for use in this project.
-│   ├── cloudops/                   ## Main module for CloudOps automation
+│   ├── runbooks/                   ## Main module for CloudOps automation
 │   │   ├── __init__.py             ## Package initializer
 │   │   ├── s3.py                   ## S3 utility functions
 │   │   ├── ec2.py                  ## EC2 automation

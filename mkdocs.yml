@@ -15,7 +15,7 @@ plugins:
 
 nav:
   - 🥇 CloudOps Overview: index.md
-  - Explanation: 'cloudops/explanation.md'
-  - How-To Guides: 'cloudops/guides.md'
-  - Reference: 'cloudops/reference.md'
-  - Tutorials: 'cloudops/tutorials.md'
+  - Explanation: 'runbooks/explanation.md'
+  - How-To Guides: 'runbooks/guides.md'
+  - Reference: 'runbooks/reference.md'
+  - Tutorials: 'runbooks/tutorials.md'

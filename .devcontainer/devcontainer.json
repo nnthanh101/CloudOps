@@ -3,13 +3,16 @@
 {
   "name": "Data-Science Cross-Platform Docker-Container, including Python, JupyterLab, Gunicorn, Nginx, and MkDocs.",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "docker.io/nnthanh101/python:latest",
+  // "image": "docker.io/nnthanh101/python:latest",
+  "build": { 
+    "context": "../",
+    "dockerfile": "../Dockerfile",
+  },
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
   // "mounts": [
   //   "source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/workspace/.aws,type=bind,consistency=cached,readonly",
   // ],
-  "remoteUser": "os",
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -40,7 +43,7 @@
   },
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "cp ~/taskfile/Taskfile.yaml . && task",
-  "postCreateCommand": "task -d ~",
+  "postCreateCommand": "ls /workspace",
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
@@ -54,6 +57,7 @@
         "streetsidesoftware.code-spell-checker",
         "vscode-icons-team.vscode-icons",
         "esbenp.prettier-vscode",
+        "vscode.git",
         // "HashiCorp.terraform",
         // "yy0931.vscode-sqlite3-editor",
         // "ms-ossdata.vscode-postgresql",
@@ -99,5 +103,6 @@
     }
   },
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-  // "remoteUser": "root"
+  "remoteUser": "root"
+  // "remoteUser": "os"
 }
