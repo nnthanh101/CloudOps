@@ -1,6 +1,9 @@
 ## Stage 1: Build Stage with Dependencies
 FROM python:3.12-slim AS builder
 
+## https://github.com/users/nnthanh101/packages/container/package/runbooks
+LABEL org.opencontainers.image.source https://github.com/nnthanh101/runbooks
+
 ## Update base image and install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential git curl \

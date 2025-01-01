@@ -84,8 +84,8 @@ tasks:
   code_quality:
     desc: "Validcate Code Quality with SonarQube"
     cmds:
-      - echo "SonarQube: Validcate Code Quality ..."
-      - echo "sonar-python: https://www.sonarsource.com/knowledge/languages/python/"
+      - echo "Validcate Code Quality using SonarQube"
+      - echo "sonar-python https://www.sonarsource.com/knowledge/languages/python/"
   
 
   #################################################################################

@@ -120,24 +120,20 @@ cloudops-automation/
 │                         runbooks and configuration for tools like black
 │
 ├── src/                            ## 🧩 Source code for use in this project.
-│   ├── runbooks/                   ## Main module for CloudOps automation
+│   ├── runbooks/                   ## Main module for CloudOps Runbooks automation
 │   │   ├── __init__.py             ## Package initializer
-│   │   ├── s3.py                   ## S3 utility functions
-│   │   ├── ec2.py                  ## EC2 automation
-│   │   ├── rds.py                  ## RDS management
-│   │   ├── runbooks/               ## Automation runbooks
-│   │   │   ├── backup.py           ## Automated backup runbook
-│   │   │   ├── scale-out.py        ## Scale-out automation runbook
-│   │   │   └── cleanup.py          ## Cleanup automation runbook
-│   ├── utils/                      ## Utility scripts (logging, configs)
-│   ├── cli/                        ## Command-line interface
-│   │   ├── __init__.py             ## CLI module initializer
-│   │   ├── main.py                 ## CLI entry point
-│   │   └── commands.py             ## CLI commands
-│   └── tests/                      ## Unit and integration tests
-│       ├── test_s3.py              ## Test cases for S3 module
-│       ├── test_ec2.py             ## Test cases for EC2 module
-│       └── test_runbooks.py        ## Test cases for runbooks
+│   │   ├── calculator.py           ## [Python101] Calculator
+│   │   ├── config.py
+│   │   ├── exceptions.py
+│   │   ├── utils.py                ## Utility scripts (logging, configs)
+│   │   └── cleanup.py              ## Cleanup automation runbook
+│   ├── main.py     
+├── test/                           ## Unit and integration tests
+│   ├── conftest.py
+│   ├── __init__.py
+│   ├── test_calculator.py          ## [Python101] Test cases for calculator
+│   ├── test_utils.py               ## Test cases for utils
+│   └── test_exceptions.py         
 ├── templates/                      ## Terraform and CloudFormation templates
 ├── tools/                          ## Developer tools and scripts
 ├── .dockerignore                   ## Docker ignore file
@@ -157,18 +153,24 @@ cloudops-automation/
 
 ```
 
-### Docker Image
+### [Github Container Registry to store and manage Docker and OCI images](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 
-* Check if the image exists in GitHub Packages:
+1. Check if the image exists in GitHub Packages:
 
 ```
 docker pull ghcr.io/nnthanh101/runbooks:latest
 ```
 
-* If the image doesn't exist, build and push it:
+2. If the image doesn't exist, build and push it:
 
 ```
 docker build -t ghcr.io/nnthanh101/runbooks:latest .
 docker login ghcr.io -u nnthanh -p GH_TOKEN
 docker push ghcr.io/nnthanh101/runbooks:latest
+```
+
+3. Inspect
+
+```
+docker inspect ghcr.io/nnthanh101/runbooks:latest
 ```
