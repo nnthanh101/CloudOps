@@ -1,4 +1,4 @@
-# runbooks documentation!
+# Runbooks Documentation!
 
 ## Description
 
@@ -23,10 +23,10 @@ The documentation follows the best practice for project documentation and consis
 
 ### Python 101
 
-1. [Tutorials](python/tutorials.md)
-2. [How-To Guides](python/guides.md)
-3. [Reference](python/reference.md)
-4. [Explanation](python/explanation.md)
+1. [Tutorials](runbooks/tutorials.md)
+2. [How-To Guides](runbooks/guides.md)
+3. [Reference](runbooks/reference.md)
+4. [Explanation](runbooks/explanation.md)
 
 Quickly find what you're looking for depending on your use case by looking at the different pages.
 

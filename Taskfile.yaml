@@ -1,9 +1,16 @@
+## ==================================================
+## 🔧 Taskfile: Workflow Automation for CloudOps
+## ==================================================
 version: '3'
+# silent: true
+# output: prefixed
+
 
 #################################################################################
-# GLOBAL VARIABLES                                                              #
+## 🌎 GLOBAL VARIABLES                                                          #
 #################################################################################
 vars:
+  TODAY: '{{ now | date "2006-01-02T15:04:05-07:00" }}'
   PROJECT_NAME: "runbooks"
   PYTHON_VERSION: "3.12"
   PYTHON_INTERPRETER: "python3"
@@ -11,9 +18,6 @@ vars:
   DATA_BUCKET: "s3://runbooks/data"
   DATA_LOCAL_DIR: "data"
   PUBLISH_TOKEN: "{{.UV_PUBLISH_TOKEN}}"
-
-  ## Set UV default to copy mode to prevent filesystem issues
-  UV_LINK_MODE: "copy"
 
 #################################################################################
 # TASKS                                                                         #
@@ -34,9 +38,9 @@ tasks:
   install:
   desc: "Install Python dependencies using UV with copy mode"
   cmds:
-    - echo "Setting UV link mode to {{.UV_LINK_MODE}} for compatibility..."
-    - export UV_LINK_MODE={{.UV_LINK_MODE}}
-    # - uv self update
+    - echo "Setting UV link mode for compatibility..."
+    - export UV_LINK_MODE=copy
+    - uv self update
     - echo "Syncing dependencies with UV..."
     - uv sync --all-extras --dev
     - echo "Installing build tool..."
@@ -143,6 +147,7 @@ tasks:
     desc: "Run CI/CD pipeline tasks: clean, lint, format, and test"
     cmds:
       - task: clean
+      - task: lint
       - task: code_quality
       - export PYTHONPATH=src:$PYTHONPATH
       - task: test
