@@ -147,6 +147,7 @@ tasks:
     desc: "Run CI/CD pipeline tasks: clean, lint, format, and test"
     cmds:
       - task: clean
+      - task: lint
       - task: code_quality
       - export PYTHONPATH=src:$PYTHONPATH
       - task: test
