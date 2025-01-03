@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - python-template
 
 permissions:
   contents: write
@@ -14,14 +15,20 @@ jobs:
     env:
       ## Set the working directory dynamically
       working-directory: .
+      PYTHONPATH: ${{ github.workspace }}/src  ## Add src to PYTHONPATH
 
     steps:
-      - uses: actions/checkout@v4
+      ## --- Checkout Repository ---
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      ## --- Configure Git ---
       - name: Configure Git Credentials
         run: |
           git config user.name "Nhat-Thanh Nguyen"
           git config user.email nnthanh101@gmail.com
-      - uses: actions/setup-python@v5
+      ## --- Setup Python Environment ---
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
         with:
           python-version: 3.12
       - name: Cache Dependencies
@@ -32,7 +39,8 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - name: Install MkDocs and Dependencies
+      ## --- Install MkDocs and Dependencies ---
+      - name: Install MkDocs and Plugins
         run: |
           pip install --no-cache-dir mkdocs mkdocs-material mkdocstrings mkdocstrings[python]
       
@@ -42,7 +50,31 @@ jobs:
           sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
           echo "PATH=/usr/local/bin:$PATH" >> $GITHUB_ENV  ## Add Task CLI to PATH
           task --version
-      
+
+      ## --- Install UV Dependency Manager ---
+      - name: Install UV (Dependency Manager)
+        run: |
+          curl -fsSL https://astral.sh/uv/install.sh | sh
+          echo "PATH=/usr/local/bin:$PATH" >> $GITHUB_ENV
+          uv --version
+
+      ## --- Install Dependencies with UV ---
+      - name: Install Project Dependencies
+        run: |
+          echo "Setting UV link mode for compatibility..."
+          export UV_LINK_MODE=copy
+          uv sync --all-extras --dev --compile-bytecode  ## Install all dependencies
+
+      ## --- Run Code Quality Checks ---
+      - name: Run Code Quality Checks
+        run: |
+          ## task clean, lint, code_quality, test, build
+          task ci
+      ## --- Validate MkDocs Build ---
+      - name: Validate MkDocs Build
+        run: |
+          mkdocs build  ## Validate the documentation build before deployment
+
       ## --- Build and Deploy MkDocs ---
       - name: Build & Deploy Mkdocs
         run: |
