@@ -61,8 +61,8 @@ jobs:
       ## --- Install Dependencies with UV ---
       - name: Install Project Dependencies
         run: |
-          echo "Setting UV link mode to ${{ env.UV_LINK_MODE }} for compatibility..."
-          export UV_LINK_MODE=${{ env.UV_LINK_MODE }}
+          echo "Setting UV link mode for compatibility..."
+          export UV_LINK_MODE=copy
           uv sync --all-extras --dev --compile-bytecode  ## Install all dependencies
 
       ## --- Run Code Quality Checks ---
