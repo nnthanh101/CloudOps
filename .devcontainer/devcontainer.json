@@ -1,21 +1,23 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-  "name": "Data-Science Cross-Platform Docker-Container, including Python, JupyterLab, Gunicorn, Nginx, and MkDocs.",
+  "name": "CloudOps/FinOps Cross-Platform Docker-Container, including Python, JupyterLab, Gunicorn, Nginx, and MkDocs.",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  // "image": "docker.io/nnthanh101/python:latest",
-  "image": "ghcr.io/nnthanh101/runbooks:latest",
   // "build": { 
   //   "context": "../",
   //   "dockerfile": "../Dockerfile",
   // },
+  // "image": "ghcr.io/nnthanh101/runbooks:latest",
+  "image": "docker.io/nnthanh101/runbooks:latest",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
   // "mounts": [
   //   "source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/workspace/.aws,type=bind,consistency=cached,readonly",
   // ],
+
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
+
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [
     8000,
@@ -43,8 +45,7 @@
     },
   },
   // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "cp ~/taskfile/Taskfile.yaml . && task",
-  "postCreateCommand": "ls /workspace",
+  "postCreateCommand": "task -d ~",
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
@@ -59,6 +60,7 @@
         "vscode-icons-team.vscode-icons",
         "esbenp.prettier-vscode",
         "vscode.git",
+        "charliermarsh.ruff"
         // "HashiCorp.terraform",
         // "yy0931.vscode-sqlite3-editor",
         // "ms-ossdata.vscode-postgresql",
@@ -103,7 +105,13 @@
       // ],
     }
   },
+  // "containerEnv": {
+  //       "DISPLAY": "dummy",
+  //       "PYTHONUNBUFFERED": "True",
+  //       "UV_LINK_MODE": "copy",
+  //       "UV_PROJECT_ENVIRONMENT": "/home/os/.venv"
+  // },
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-  "remoteUser": "root"
-  // "remoteUser": "os"
+  // "remoteUser": "root"
+  "remoteUser": "os"
 }
