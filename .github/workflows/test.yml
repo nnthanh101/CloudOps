@@ -31,6 +31,13 @@ jobs:
           uv sync --all-extras --dev
           uv pip install -e .
 
+      ## --- Install 'task' CLI ---
+      - name: Install Taskfile CLI
+        run: |
+          sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
+          echo "PATH=/usr/local/bin:$PATH" >> $GITHUB_ENV  ## Add Task CLI to PATH
+          task --version
+
       ## Code Quality Checks
       - name: 💅 Lint and Format Check
         run: |
